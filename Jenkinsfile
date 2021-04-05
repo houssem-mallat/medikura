@@ -5,6 +5,7 @@ pipeline {
 
         stage('Install') {
             steps {
+                sh ('kubectl install && yarn install')
                 echo 'Installing..'
             }
         }
