@@ -5,7 +5,7 @@ pipeline {
 
         stage('Install') {
             steps {
-                echo 'Installing 4..'
+                echo 'Installing 5 ...'
                 //Installing kubectl in Jenkins agent
                 sh 'curl -LO https://storage.googleapis.com/kubernetes-release/release/$(curl -s https://storage.googleapis.com/kubernetes-release/release/stable.txt)/bin/linux/amd64/kubectl'
                 sh 'sudo chmod +x ./kubectl && sudo mv kubectl /usr/local/sbin'
