@@ -1,16 +1,5 @@
-# FROM node:12-alpine
-
-# WORKDIR /var/client
-
-# COPY . .
-
-# RUN yarn install
-
-# CMD [ "yarn" , "start"]
-
-# Dockerfile for React client
-
 # Build react client
+
 FROM node:10.16-alpine
 
 # Working directory be app
@@ -19,12 +8,12 @@ WORKDIR /usr/src/app
 COPY package*.json ./
 
 ###  Installing dependencies
-
-RUN npm install --silent
+RUN npm install
 
 # copy local files to app folder
 COPY . .
 
+# Exports
 EXPOSE 3000
 
 CMD ["npm","start"]

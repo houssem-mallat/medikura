@@ -2,11 +2,10 @@ version: '3.7'
 services:
   server:
     build:
-      context: .
+      context: ./server/
       dockerfile: DOCKERFILE
-    image: myapp-server
-    container_name: myapp-node-server
-    command: /usr/src/app/node_modules/.bin/nodemon server.js
+    image: server
+    command: /usr/src/app/node_modules/.bin/nodemon ./server/server.js
     volumes:
       - ./:/usr/src/app
       - /usr/src/app/node_modules
@@ -15,8 +14,8 @@ services:
     depends_on:
       - mongo
     env_file: .env
-    #environment:
-    #  - NODE_ENV=development
+    # environment:
+    #   - NODE_ENV=development
     networks:
       - app-network
   mongo:
@@ -31,8 +30,7 @@ services:
     build:
       context: ./client/
       dockerfile: DOCKERFILE
-    image: myapp-client
-    container_name: myapp-react-client
+    image: client
     command: npm start
     volumes:
       - ./client/:/usr/app

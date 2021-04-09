@@ -1,13 +1,3 @@
-# FROM node:12-alpine
-
-# WORKDIR /var/server
-
-# COPY . .
-
-# RUN yarn install
-
-# CMD [ "yarn" , "mern"]
-
 #  Dockerfile for Node Express Backend
 
 FROM node:10.16-alpine
@@ -15,11 +5,14 @@ FROM node:10.16-alpine
 # Create App Directory
 WORKDIR /usr/src/app
 
-# Install Dependencies
-COPY . .
 
+COPY package*.json ./
+
+# Install Dependencies
 RUN npm install
 
+# copy local files to app folder
+COPY . .
 
 # Exports
 EXPOSE 5000
